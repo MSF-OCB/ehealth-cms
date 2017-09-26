@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+ <div class="intro">{{ page.intro|richtext }}</div>
+
+<div class="mdl-grid">
+    {% for mission in page.get_children %}
+    <div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
+        <a class="mdl-navigation__link" href="{{ mission.url }}">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">{{ mission.title }}</h2>
+            </div>
+            <div class="mdl-card__media">
+
+
+
+
+                <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ mission.specific.location.y}},{{ mission.specific.location.x}}&zoom={{mission.specific.zoom_map}}&size=320x200&maptype=terrain&markers={% for project in mission.get_children %}color:brown%7C{{ project.specific.location.y}},{{ project.specific.location.x}}{% if not forloop.last%}|{% endif %}|{% endfor %}&key={{GOOGLE_API_KEY}}" width="100%" height="100%" border="0" alt="">
+                <!--<img src="https://maps.googleapis.com/maps/api/staticmap?size=320x200&maptype=terrain&markers={% for project in mission.get_children %}color:brown%7C{{ project.specific.location.y}},{{ project.specific.location.x}}{% if not forloop.last %}|{% endif %}{% endfor %}&key={{GOOGLE_API_KEY}}" width="100%" height="100%" border="0" alt="">-->
+                <!--<img src="skytower.jpg" width="173" height="157" border="0" alt="" style="padding:10px;">-->
+            </div>
+            <div class="mdl-card__supporting-text">
+                <span class="mdl-chip"><span class="mdl-chip__text">Tool X</span></span>
+                <span class="mdl-chip"><span class="mdl-chip__text">Tool Y</span></span>
+            </div>
+            <!--<div class="mdl-card__actions">-->
+            <!--<a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>-->
+            <!--</div>-->
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

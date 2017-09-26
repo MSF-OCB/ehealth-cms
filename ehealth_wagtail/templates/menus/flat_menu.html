@@ -1,0 +1,25 @@
+{% load menu_tags %}
+<nav class="mdl-navigation">
+    {% for item in menu_items %}
+    <a class="mdl-navigation__link" href="{{ item.href }}">
+        <i class="material-icons" role="presentation">home</i>
+        {{ item.text }}
+    </a>
+
+<!--<a href="{{ item.href }}" {% if item.has_children_in_menu %} class="dropdown-toggle"-->
+   <!--id="ddtoggle_{{ item.link_page.pk }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% endif %}>{{-->
+    <!--item.text }}{% if item.has_children_in_menu %} <span class="caret"></span>{% endif %}</a>-->
+{% endfor %}
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">inbox</i>Inbox</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">delete</i>Trash</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">report</i>Spam</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">forum</i>Forums</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">flag</i>Updates</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">local_offer</i>Promos</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">shopping_cart</i>Purchases</a>-->
+    <!--<a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">people</i>Social</a>-->
+    <div class="mdl-layout-spacer"></div>
+    <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">help_outline</i><span
+            class="visuallyhidden">Help</span></a>
+</nav>
+

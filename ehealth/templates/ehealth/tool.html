@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<i>{{page.pitch}}</i>
+<div>implementations</div>
+<div>Technology</div>
+<div>Medical contents</div>
+<div>categories (rationales)</div>
+<div>Projects using the tool (with badges "new" and "planned")</div>
+<div class="intro">{{ page.intro|richtext }}</div>
+
+{% endblock %}
