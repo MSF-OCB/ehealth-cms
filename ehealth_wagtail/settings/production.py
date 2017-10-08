@@ -8,3 +8,6 @@ try:
     from .local import *
 except ImportError:
     pass
+
+from os import environ
+
