@@ -14,6 +14,7 @@ db.sqlite3
 npm-debug.log*
 *.idea/
 /*.egg/
+/settings/local.py
 
 ### JetBrains
 .idea/

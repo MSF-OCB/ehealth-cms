@@ -140,10 +140,3 @@ WAGTAIL_SITE_NAME = "ehealth_wagtail"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-# TODO too generic!!!
-ALLOWED_HOSTS = ['*']
-
-GOOGLE_MAPS_V3_APIKEY = 'AIzaSyAzTKuGAzcoIwJ31pCktzJ2I8hcqwHOPJs'
-GEO_WIDGET_DEFAULT_LOCATION = {'lat': 50.833349, 'lng': 4.364177}
-
-
