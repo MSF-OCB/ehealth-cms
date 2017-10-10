@@ -20,7 +20,7 @@ GEO_WIDGET_DEFAULT_LOCATION = {'lat': 50.833349, 'lng': 4.364177}
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = { 'default': dj_database_url.config() }
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
