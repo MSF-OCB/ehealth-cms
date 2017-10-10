@@ -99,22 +99,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ehealth_wagtail.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-DATABASES = {
-        'default': {
-            # 'ENGINE': 'django.db.backends.postgresql',
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': 'wagtail', # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'wagtail',
-            'PASSWORD': 'wagtail',
-            'HOST': 'localhost', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '5432',
-        }
-    }
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -158,5 +142,8 @@ BASE_URL = 'http://example.com'
 
 # TODO too generic!!!
 ALLOWED_HOSTS = ['*']
+
+GOOGLE_MAPS_V3_APIKEY = 'AIzaSyAzTKuGAzcoIwJ31pCktzJ2I8hcqwHOPJs'
+GEO_WIDGET_DEFAULT_LOCATION = {'lat': 50.833349, 'lng': 4.364177}
 
 
