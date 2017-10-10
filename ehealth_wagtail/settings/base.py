@@ -156,5 +156,7 @@ WAGTAIL_SITE_NAME = "ehealth_wagtail"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+# TODO too generic!!!
+ALLOWED_HOSTS = ['*']
 
 
