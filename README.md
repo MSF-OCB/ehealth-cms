@@ -1,6 +1,9 @@
 server side:
 brew install gdal
 
++ init:
+createsuperuser
+
 + local:
 create database etc
 
