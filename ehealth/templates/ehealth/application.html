@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<i>{{page.pitch}}</i>
+<div>implementations</div>
+<div>Technology</div>
+<div>Medical contents</div>
+<div>categories (rationales)</div>
+<div class="intro">{{ page.intro|richtext }}</div>
+<div>Projects using the tool (with badges "new" and "planned"):
+{% with total=page.applicationFieldUses.count %}
+    {{ total }} use{{ total|pluralize }}
+{% endwith %}
+</div>
+<ul>
+{% for applicationUse in page.applicationFieldUses.all %}
+    <li>{{applicationUse.fieldRef }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

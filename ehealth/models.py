@@ -62,9 +62,19 @@ class Mission(GeoContent):
 
     # Parent page / subpage type rules
     parent_page_types = ['ehealth.MissionIndex']
-    subpage_types = ['ehealth.FieldProject']
+    subpage_types = ['ehealth.Field']
 
-class FieldProject(GeoContent):
+    @property
+    def applications(self):
+        applications = []
+        for i in self.get_children().all():
+            for j in i.specific.applicationFieldUses.all():
+                if j.applicationRef not in applications:
+                    applications.append(j.applicationRef)
+        return applications
+
+
+class Field(GeoContent):
     intro = RichTextField()
 
     # Editor panels configuration
@@ -82,7 +92,7 @@ class FieldProject(GeoContent):
     subpage_types = []
 
 
-class ToolIndex(Index):
+class ApplicationIndex(Index):
     date = models.DateField("Post date")
 
     # Editor panels configuration
@@ -95,15 +105,14 @@ class ToolIndex(Index):
     ]
 
     # Parent page / subpage type rules
-    subpage_types = ['ehealth.Tool']
+    subpage_types = ['ehealth.Application']
 
 
-class Tool(Page):
+class Application(Page):
     date = models.DateField("Post date")
     pitch = models.TextField(default="")
     intro = RichTextField(default="")
-    projects = ParentalManyToManyField('FieldProject',  related_name='tools', blank=True)
-
+    fields = ParentalManyToManyField('Field',  related_name='applications', blank=True)
 
     # Editor panels configuration
     content_panels = Page.content_panels + [
@@ -115,12 +124,14 @@ class Tool(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         # ImageChooserPanel('feed_image'),
     ]
-    projects_panels = [
-        FieldPanel('projects', widget=forms.CheckboxSelectMultiple),
+    fields_panels = [
+        # FieldPanel('fields', widget=forms.CheckboxSelectMultiple),
+        InlinePanel('applicationFieldUses', label="Field uses"),
+
     ]
     edit_handler = TabbedInterface([
         ObjectList(content_panels, heading='Content'),
-        ObjectList(projects_panels, heading='Projects'),
+        ObjectList(fields_panels, heading='MSF Fields'),
         ObjectList(promote_panels, heading='Promote'),
         ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     ])
@@ -132,11 +143,24 @@ class Tool(Page):
     ]
 
     # Parent page / subpage type rules
-    parent_page_types = ['ehealth.ToolIndex']
+    parent_page_types = ['ehealth.ApplicationIndex']
     subpage_types = []
 
 
-# class BlogPageRelatedLink(Orderable):
+class ApplicationFieldUse(models.Model):
+    applicationRef = ParentalKey(Application, related_name='applicationFieldUses')
+    fieldRef = ParentalKey(Field, related_name='applicationFieldUses')
+
+    panels = [
+        FieldPanel('applicationRef'),
+        FieldPanel('fieldRef'),
+    ]
+
+    # Parent page / subpage type rules
+    parent_page_types = ['ehealth.Application']
+    subpage_types = []
+
+        # class BlogPageRelatedLink(Orderable):
 #     page = ParentalKey(BlogPage, related_name='related_links')
 #     name = models.CharField(max_length=255)
 #     url = models.URLField()

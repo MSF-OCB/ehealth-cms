@@ -5,8 +5,8 @@
 <i>{{page.title}}</i>
 <div>Tools
     <ul>
-    {% for tool in page.tools.all %}
-    <li>{{tool.title}}</li>
+    {% for applicationUse in page.applicationFieldUses.all %}
+        <li>{{applicationUse.applicationRef}}</li>
     {% endfor %}
     </ul>
 </div>
