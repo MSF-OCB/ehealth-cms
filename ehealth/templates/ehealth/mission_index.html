@@ -21,8 +21,11 @@
                 <!--<img src="skytower.jpg" width="173" height="157" border="0" alt="" style="padding:10px;">-->
             </div>
             <div class="mdl-card__supporting-text">
-                <span class="mdl-chip"><span class="mdl-chip__text">Tool X</span></span>
-                <span class="mdl-chip"><span class="mdl-chip__text">Tool Y</span></span>
+                {% for application in mission.specific.applications %}
+                <span class="mdl-chip"><span class="mdl-chip__text">
+                    {{ application }}
+                </span></span>
+                {% endfor %}
             </div>
             <!--<div class="mdl-card__actions">-->
             <!--<a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>-->

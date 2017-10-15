@@ -16,15 +16,14 @@
             </div>
             <div class="mdl-card__supporting-text">
                 <p>{{ tool.specific.pitch }}</p>
-                {% with total=tool.specific.projects.all.count %}
-                {% if total > 0 %}
-                <span class="mdl-chip"><span class="mdl-chip__text">{{total}} project{{total|pluralize}}</span></span>
-                {% endif %}
+                {% with total=tool.specific.applicationFieldUses.count %}
+                    {% if total > 0 %}
+                    <span class="mdl-chip">
+                        <span class="mdl-chip__text">
+                            {{ total }} project{{ total|pluralize }}
+                    </span></span>
+                    {% endif %}
                 {% endwith %}
-
-
-                <span class="mdl-chip"><span class="mdl-chip__text">Category X</span></span>
-                <span class="mdl-chip"><span class="mdl-chip__text">Category Y</span></span>
             </div>
             <!--<div class="mdl-card__actions">-->
             <!--<a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>-->
