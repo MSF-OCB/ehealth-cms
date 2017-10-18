@@ -43,10 +43,16 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
 
     'wagtail.contrib.modeladmin',
+    # TODO https://github.com/infoportugal/wagtail-modeltranslation
+    # 'wagtail_modeltranslation',
+    'wagtail.api.v2',
+    'rest_framework',
     'wagtailmenus',
 
     'modelcluster',
     'taggit',
+    # TODO https://django-import-export.readthedocs.io/en/latest/getting_started.html
+    'import_export',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'wagtailgeowidget',
+    'wagtailgeowidget', #TODO remove?
     'leaflet', #TODO
 ]
 
@@ -71,6 +77,7 @@ MIDDLEWARE = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'ehealth_wagtail.urls'
@@ -103,6 +110,10 @@ WSGI_APPLICATION = 'ehealth_wagtail.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGES = [
+#     ('en', u'English'),
+#     ('fr', u'French'),
+# ]
 
 TIME_ZONE = 'UTC'
 
